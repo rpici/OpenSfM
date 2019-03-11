@@ -214,7 +214,9 @@ def extract_features_akaze(image, config):
 
 def extract_features_hahog(image, config):
     t = time.time()
-    points, desc = csfm.hahog(image.astype(np.float32) / 255,  # VlFeat expects pixel values between 0, 1
+    max_14_bit_value = 16383;
+    max_pixel_value = max_14_bit_value;
+    points, desc = csfm.hahog(image.astype(np.float32) / max_pixel_value,  # VlFeat expects pixel values between 0, 1
                               peak_threshold=config['hahog_peak_threshold'],
                               edge_threshold=config['hahog_edge_threshold'],
                               target_num_features=config['feature_min_frames'],

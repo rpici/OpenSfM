@@ -577,7 +577,8 @@ def imread(filename):
     else:
         flags = cv2.CV_LOAD_IMAGE_COLOR
 
-    bgr = cv2.imread(filename, flags)
+    #bgr = cv2.imread(filename, flags)
+    bgr = cv2.imread( filename, cv2.IMREAD_UNCHANGED )
 
     if bgr is None:
         raise IOError("Unable to load image {}".format(filename))
